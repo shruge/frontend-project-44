@@ -1,5 +1,9 @@
 import readlineSync from "readline-sync";
 
+export const getRndNum = (max, min = 1) => {
+   return Math.floor(Math.random() * (max - min) + min);
+}
+
 export const checkAnswer = (question, correct, userName) => {
 	console.log(`Question: ${question}`);
 	

@@ -1,5 +1,5 @@
 import { greetUser } from "../cli.js";
-import { checkAnswer } from "../index.js";
+import { checkAnswer, getRndNum } from "../index.js";
 
 export const brainGCD = () => {
    const userName = greetUser();
@@ -20,8 +20,8 @@ export const brainGCD = () => {
    console.log("Find the greatest common division of given numbers.");
 
    for (let i = 0; i < 3; i++) {
-      const rndNum1 = Math.floor(Math.random() * (100 - 1) + 1);
-      const rndNum2 = Math.floor(Math.random() * (100 - 1) + 1);
+      const rndNum1 = getRndNum(100);
+      const rndNum2 = getRndNum(100);
       const question = `${rndNum1} ${rndNum2}`;
       const result = getGCD(rndNum1, rndNum2);
 

@@ -1,5 +1,5 @@
 import { greetUser } from "../cli.js";
-import { checkAnswer } from "../index.js";
+import { checkAnswer, getRndNum } from "../index.js";
 
 export const brainEven = () => {
    let count = 0;
@@ -8,7 +8,7 @@ export const brainEven = () => {
    console.log('Answer "yes" if the number is even, otherwise answer "no".');
 
    for (let i = 0; i < 3; i++) {
-      const rnd = Math.floor(Math.random() * 100);
+      const rnd = getRndNum(100);
       const correct = rnd % 2 ? "no" : "yes";
 
       if (checkAnswer(rnd, correct, userName)) count+=1;
