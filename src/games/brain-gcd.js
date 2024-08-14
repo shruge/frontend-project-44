@@ -17,7 +17,7 @@ export const brainGCD = () => {
    }
 
 
-   console.log("Find the greatest common division of given numbers.");
+   console.log("Find the greatest common divisor of given numbers.");
 
    for (let i = 0; i < 3; i++) {
       const rndNum1 = getRndNum(100);
