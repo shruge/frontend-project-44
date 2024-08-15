@@ -1,5 +1,6 @@
 import { getRndNum, gameEngine } from "../index.js";
 
+const maxRndNum = 100;
 const rule = "Find the greatest common divisor of given numbers.";
 
 const getGCD = (num1, num2) => {
@@ -13,10 +14,10 @@ const getGCD = (num1, num2) => {
 }
    
 const createBrainGCDData = () => {
-    const rndNum1 = getRndNum(100);
-    const rndNum2 = getRndNum(100);
+    const rndNum1 = getRndNum(maxRndNum);
+    const rndNum2 = getRndNum(maxRndNum);
     const question = `${rndNum1} ${rndNum2}`;
-    const correctAnswer = getGCD(rndNum1, rndNum2);
+    const correctAnswer = String(getGCD(rndNum1, rndNum2));
       
     return {
         question,

@@ -1,6 +1,7 @@
 import { getRndNum, gameEngine } from "../index.js";
 
-const rule = 'Answer "yes" if given number is prime. Otherwise answe "no".';
+const maxRndNum = 100;
+const rule = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
 const isItPrime = (num) => {
     if (num <= 1) return false;
@@ -12,7 +13,7 @@ const isItPrime = (num) => {
 }
 
 const createBrainPrimeData = () => {
-    const rndNum = getRndNum(100);
+    const rndNum = getRndNum(maxRndNum);
     const correctAnswer = isItPrime(rndNum) ? "yes" : "no";
 	
     return {

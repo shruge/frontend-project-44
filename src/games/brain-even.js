@@ -1,10 +1,13 @@
 import { getRndNum, gameEngine } from "../index.js";
 
+const maxRndNum = 100;
 const rule = 'Answer "yes" if the number is even, otherwise answer "no".';
 
+const isItEven = (num) => num % 2 === 0;
+
 const createBrainEvenData = () => {
-    const rndNum = getRndNum(100);
-    const correctAnswer = rndNum % 2 ? "no" : "yes";
+    const rndNum = getRndNum(maxRndNum);
+    const correctAnswer = isItEven(rndNum) ? "yes" : "no";
     
     return {
     	correctAnswer,
