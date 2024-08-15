@@ -1,21 +1,31 @@
 import readlineSync from "readline-sync";
+import { greetUser } from "./cli.js";
 
 export const getRndNum = (max, min = 1) => {
    return Math.floor(Math.random() * (max - min) + min);
 }
 
-export const checkAnswer = (question, correct, userName) => {
-	console.log(`Question: ${question}`);
+export const gameEngine = (rule, createGameData) => {
+	const rounds = 3;
+	const userName = greetUser();
+
+	console.log(rule);
 	
-	const userAnswer = readlineSync.question("Your answer: ");
-
-	if (userAnswer !== correct) {
-		console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correct}'.`);
-		console.log(`Let's try again, ${userName}!`);
+	for (let i = 0; i < rounds; i+=1) {
+		const { question, correctAnswer } = createGameData();
 		
-		return false;
+		console.log(`Question: ${question}`);
+		
+		const userAnswer = readlineSync.question("Your answer: ");
+		
+		if (userAnswer !== String(correctAnswer)) {
+			console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
+			console.log(`Let's try again, ${userName}!`);
+			return;
+		}
+		
+		console.log("Correct!");
 	}
-
-	console.log("Correct!");
-	return true;
-}
+	
+	console.log(`Congratulations, ${userName}!`);
+} 

@@ -1,34 +1,29 @@
-import { greetUser } from "../cli.js";
-import { checkAnswer, getRndNum } from "../index.js";
+import { getRndNum, gameEngine } from "../index.js";
 
-export const brainProgression = () => {
+const rule = "What number is missing in the progression?";
+
+const createBrainProgressData = () => {
     const sequenceLength = 10;
-    const userName = greetUser();
-
-    let count = 0;
-
-    console.log("What number is missing in the progression?");
-
-    for (let i = 0; i < 3; i++) {
-        const increasedBy = getRndNum(100);
-        const removeIndex = getRndNum(sequenceLength, 0);
-        const sequence = [getRndNum(100)];
+    const increasedBy = getRndNum(100);
+    const removeIndex = getRndNum(sequenceLength, 0);
+    const sequence = [getRndNum(100)];
     
-        let removedNum = 0;
-        let question = '';
+    let correctAnswer = 0;
+    let question = '';
 
-        for (let i = 1; i < sequenceLength; i++)
-            sequence.push(sequence[i - 1] + increasedBy);
+    for (let i = 1; i < sequenceLength; i+=1)
+    	sequence.push(sequence[i - 1] + increasedBy);
     
-        removedNum = sequence[removeIndex];
-        question = sequence.map((item, i) => (
-            i === removeIndex ? "..."
-            : item
-        )).join(' ');
+    correctAnswer = sequence[removeIndex];
+    question = sequence.map((item, i) => (
+    	i === removeIndex ? ".."
+        : item
+     )).join(' ');
 
-	if (checkAnswer(question, String(removedNum), userName)) count+=1;
-	else break;
+    return {
+        question,
+        correctAnswer
     }
-
-    if (count === 3) console.log(`Congratulations, ${userName}!`);
 }
+
+export default () => gameEngine(rule, createBrainProgressData);
